@@ -1,5 +1,12 @@
+import React from "react";
+import EditorPage from "pages/EditorPage";
+
 const App = () => {
-  return <div>dasd</div>;
+  return (
+    <div>
+      <EditorPage />
+    </div>
+  );
 };
 
 export default App;
