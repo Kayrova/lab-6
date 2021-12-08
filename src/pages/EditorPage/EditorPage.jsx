@@ -5,6 +5,7 @@ import {
   EditorText,
   EditorField,
   DownLoadLink,
+  ButtonContainer,
 } from "./Styled";
 import { newLineSymbol, newLineValidation } from "utils/newLineValidation";
 import { changeCursorPosition } from "utils/changeCursorPosition";
@@ -14,7 +15,7 @@ const ignoreKeyCodeList = [
 ];
 
 export const cursor = "|";
-export const charPerLine = 40;
+export const charPerLine = 60;
 
 const EditorPage = () => {
   const [text, setText] = useState(cursor);
@@ -106,20 +107,22 @@ const EditorPage = () => {
         ))}
       </EditorField>
 
-      <DownLoadLink
-        download={"myText.txt"}
-        href={"#"}
-        ref={loadRef}
-        onClick={onFileUpload}
-      >
-        Скачать
-      </DownLoadLink>
+      <ButtonContainer>
+        <DownLoadLink
+          download={"myText.txt"}
+          href={"#"}
+          ref={loadRef}
+          onClick={onFileUpload}
+        >
+          Скачать
+        </DownLoadLink>
 
-      <input
-        type={"file"}
-        accept=".txt"
-        onChange={(event) => onFileAdd(event.target.files)}
-      />
+        <input
+          type={"file"}
+          accept=".txt"
+          onChange={(event) => onFileAdd(event.target.files)}
+        />
+      </ButtonContainer>
     </EditorPageContainer>
   );
 };

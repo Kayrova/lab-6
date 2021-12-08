@@ -25,7 +25,7 @@ export const EditorField = styled.div`
   min-width: max-content;
   width: 600px;
 
-  height: 740px;
+  height: 650px;
   max-height: max-content;
 
   white-space: normal;
@@ -56,7 +56,7 @@ export const EditorText = styled.span`
 export const DownLoadLink = styled.a`
   display: block;
   max-width: max-content;
-  margin-top: 20px;
+  margin-right: 20px;
 
   padding: 11px 40px;
   background: #2e2fa0;
@@ -66,4 +66,11 @@ export const DownLoadLink = styled.a`
   font-weight: 500;
   color: #ffffff;
   text-decoration: none;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-content: center;
+
+  padding-top: 10px;
 `;
