@@ -3,6 +3,8 @@ import { charPerLine, cursor } from "pages/EditorPage/EditorPage";
 export const changeCursorPosition = (str, keyCode) => {
   const cursorPosition = str.indexOf(cursor);
 
+  const cursorLinePosition = Math.trunc((cursorPosition + 1) / charPerLine);
+
   const strWithOutCursor = `${str.slice(0, cursorPosition)}${str.slice(
     cursorPosition + 1
   )}`;
@@ -13,8 +15,10 @@ export const changeCursorPosition = (str, keyCode) => {
       if (cursorPosition > charPerLine) {
         return `${strWithOutCursor.slice(
           0,
-          cursorPosition - charPerLine
-        )}${cursor}${strWithOutCursor.slice(cursorPosition - charPerLine)}`;
+          cursorPosition - charPerLine - cursorLinePosition
+        )}${cursor}${strWithOutCursor.slice(
+          cursorPosition - charPerLine - cursorLinePosition
+        )}`;
       }
       break;
 
@@ -23,10 +27,12 @@ export const changeCursorPosition = (str, keyCode) => {
       if (cursorPosition < str.length - charPerLine) {
         return `${strWithOutCursor.slice(
           0,
-          cursorPosition + charPerLine
-        )}${cursor}${strWithOutCursor.slice(cursorPosition + charPerLine)}`;
+          cursorPosition + charPerLine + cursorLinePosition + 1
+        )}${cursor}${strWithOutCursor.slice(
+          cursorPosition + charPerLine + cursorLinePosition + 1
+        )}`;
       }
-      break;
+      return `${strWithOutCursor}${cursor}`;
 
     // Left
     case 37:
@@ -47,6 +53,39 @@ export const changeCursorPosition = (str, keyCode) => {
         )}${cursor}${strWithOutCursor.slice(cursorPosition + 1)}`;
       }
       break;
+
+    // Home
+    case 36:
+      if (cursorPosition > 0) {
+        return `${strWithOutCursor.slice(
+          0,
+          cursorPosition +
+            1 -
+            ((cursorPosition + 1) % charPerLine) +
+            cursorLinePosition
+        )}${cursor}${strWithOutCursor.slice(
+          cursorPosition +
+            1 -
+            ((cursorPosition + 1) % charPerLine) +
+            cursorLinePosition
+        )}`;
+      }
+      break;
+
+    // End
+    case 35:
+      if (
+        cursorLinePosition === Math.trunc(strWithOutCursor.length / charPerLine)
+      ) {
+        return `${strWithOutCursor}${cursor}`;
+      }
+
+      return `${strWithOutCursor.slice(
+        0,
+        (cursorLinePosition + 1) * charPerLine + cursorLinePosition
+      )}${cursor}${strWithOutCursor.slice(
+        (cursorLinePosition + 1) * charPerLine + cursorLinePosition
+      )}`;
 
     default:
       return str;

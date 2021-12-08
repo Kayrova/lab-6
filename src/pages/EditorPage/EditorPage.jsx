@@ -11,7 +11,8 @@ import { newLineSymbol, newLineValidation } from "utils/newLineValidation";
 import { changeCursorPosition } from "utils/changeCursorPosition";
 
 const ignoreKeyCodeList = [
-  18, 20, 17, 13, 27, 112, 113, 114, 115, 34, 33, 19, 44, 145, 16, 9,
+  18, 20, 17, 13, 27, 112, 113, 114, 115, 34, 33, 19, 44, 145, 16, 9, 116, 117,
+  118, 119, 120, 121, 122, 123, 45, 144, 109, 106, 110, 111, 107, 191, 220,
 ];
 
 export const cursor = "|";
@@ -51,14 +52,14 @@ const EditorPage = () => {
         case 46:
           setText(cursor);
           break;
-
+        case 36:
+        case 35:
         case 37:
         case 38:
         case 39:
         case 40:
           setText(changeCursorPosition(text, event.keyCode));
           break;
-
         case 8:
           const cursorPosition = text.indexOf(cursor);
 
@@ -70,7 +71,6 @@ const EditorPage = () => {
             );
           }
           break;
-
         default:
           if (
             ignoreKeyCodeList.indexOf(event.keyCode) === -1 &&
