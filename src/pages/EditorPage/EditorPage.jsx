@@ -73,8 +73,7 @@ const EditorPage = () => {
           break;
         default:
           if (
-            ignoreKeyCodeList.indexOf(event.keyCode) === -1 &&
-            event.code !== "Backslash"
+            ignoreKeyCodeList.indexOf(event.keyCode) === -1 
           ) {
             const newTextState = newLineValidation(text);
 
