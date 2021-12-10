@@ -115,7 +115,7 @@ const EditorPage = () => {
           ref={loadRef}
           onClick={onFileUpload}
         >
-          Скачать
+          <span>Скачать</span>
         </DownLoadLink>
 
         <FileField
@@ -126,7 +126,7 @@ const EditorPage = () => {
         />
 
         <FileAddButton onClick={() => fileFieldRef.current.click()}>
-          Загрузить файл
+          <span>Загрузить файл</span>
         </FileAddButton>
       </ButtonContainer>
     </EditorPageContainer>

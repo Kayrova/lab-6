@@ -62,10 +62,12 @@ export const DownLoadLink = styled.a`
   background: #2e2fa0;
   border-radius: 4px;
 
-  font-size: 16px;
-  font-weight: 500;
-  color: #ffffff;
-  text-decoration: none;
+  > span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -88,11 +90,12 @@ export const FileAddButton = styled.button`
   margin-right: 20px;
 
   padding: 11px 40px;
-  background: #2ea078;
+  background: #f2a405;
   border-radius: 4px;
 
-  font-size: 16px;
-  font-weight: 600;
-  color: #ffffff;
-  text-decoration: none;
+  > span {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+  }
 `;
