@@ -74,3 +74,25 @@ export const ButtonContainer = styled.div`
 
   padding-top: 10px;
 `;
+
+export const FileField = styled.input`
+  display: none;
+`;
+
+export const FileAddButton = styled.button`
+  outline: none;
+  border: none;
+  cursor: pointer;
+
+  max-width: max-content;
+  margin-right: 20px;
+
+  padding: 11px 40px;
+  background: #2ea078;
+  border-radius: 4px;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+`;

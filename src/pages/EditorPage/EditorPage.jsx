@@ -6,6 +6,8 @@ import {
   EditorField,
   DownLoadLink,
   ButtonContainer,
+  FileField,
+  FileAddButton,
 } from "./Styled";
 import { newLineSymbol, newLineValidation } from "utils/newLineValidation";
 import { changeCursorPosition } from "utils/changeCursorPosition";
@@ -21,6 +23,8 @@ export const charPerLine = 60;
 const EditorPage = () => {
   const [text, setText] = useState(cursor);
   const loadRef = useRef(null);
+
+  const fileFieldRef = useRef(null);
 
   const onFileUpload = () => {
     const blob = new Blob([text.split(cursor).join("")], {
@@ -72,9 +76,7 @@ const EditorPage = () => {
           }
           break;
         default:
-          if (
-            ignoreKeyCodeList.indexOf(event.keyCode) === -1 
-          ) {
+          if (ignoreKeyCodeList.indexOf(event.keyCode) === -1) {
             const newTextState = newLineValidation(text);
 
             const cursorPosition = newTextState.indexOf(cursor);
@@ -116,11 +118,16 @@ const EditorPage = () => {
           Скачать
         </DownLoadLink>
 
-        <input
+        <FileField
           type={"file"}
           accept=".txt"
           onChange={(event) => onFileAdd(event.target.files)}
+          ref={fileFieldRef}
         />
+
+        <FileAddButton onClick={() => fileFieldRef.current.click()}>
+          Загрузить файл
+        </FileAddButton>
       </ButtonContainer>
     </EditorPageContainer>
   );
